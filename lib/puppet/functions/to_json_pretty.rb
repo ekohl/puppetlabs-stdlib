@@ -76,6 +76,6 @@ max_nesting  => Optional[Integer[-1,default]],
         data = data.reject { |_, value| value.nil? }
       end
     end
-    JSON.dump(data, opts) << "\n"
+    Puppet::Util::Json.dump(data, opts) << "\n"
   end
 end

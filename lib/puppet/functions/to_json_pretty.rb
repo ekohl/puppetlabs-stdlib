@@ -63,7 +63,11 @@ max_nesting  => Optional[Integer[-1,default]],
       if opts[:max_nesting] == -1
         opts[:max_nesting] = false
       end
+    else
+      opts = {}
     end
+
+    opts[:pretty] = true
 
     if skip_undef
       if data.is_a? Array
@@ -72,6 +76,6 @@ max_nesting  => Optional[Integer[-1,default]],
         data = data.reject { |_, value| value.nil? }
       end
     end
-    JSON.pretty_generate(data, opts) << "\n"
+    JSON.dump(data, opts) << "\n"
   end
 end
